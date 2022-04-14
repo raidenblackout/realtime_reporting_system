@@ -120,13 +120,17 @@ function getPost($id){
     }
     $sql = "SELECT * FROM post WHERE p_id='".$id."'";
     $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $user = getUser($row['u_id']);
-    $comments = getComments($row['p_id']);
-    $images = getImages($row['p_id']);
-    $post = new Post($row['p_id'],$row['p_content'],$row['u_id'],$row['p_datetime'],getUpVotes($row['p_id']),getDownVotes($row['p_id']),sizeof($comments),$row['post_owner'],$comments,$row['p_category'],$user);
-    $post->images = $images;
-    return $post;
+    if($result && $result->num_rows>0){
+        $row = $result->fetch_assoc();
+        $user = getUser($row['u_id']);
+        $comments = getComments($row['p_id']);
+        $images = getImages($row['p_id']);
+        $post = new Post($row['p_id'],$row['p_content'],$row['u_id'],$row['p_datetime'],getUpVotes($row['p_id']),getDownVotes($row['p_id']),sizeof($comments),$row['post_owner'],$comments,$row['p_category'],$user);
+        $post->images = $images;
+        return $post;
+    }else{
+        return null;
+    }
 }
 function checkVote($id,$u_id){
     $hostname="localhost";

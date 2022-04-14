@@ -32,6 +32,10 @@ if(isset($_GET['category'])){
         No posts found that matches the query.
       </div>';
     }
+}else if(isset($_GET['post_id'])){
+    $post_id = $_GET['post_id'];
+    $post = getPost($post_id);
+    echo getIndividualPost($post);
 }else{
     $sql = "SELECT * FROM post ORDER BY p_datetime DESC LIMIT 10";
     $result = $conn->query($sql);

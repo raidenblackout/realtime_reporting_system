@@ -130,10 +130,15 @@ function getIndividualPost(Post $post){
             <div class="media">
                 <img class="align-self-start mr-3" src="static/images/{current_user_url}" alt="Generic placeholder image" style="background-color: black;width: 5vh; height: 5vh; object-fit: scale-down; border-radius: 100%">
                 <div class="media-body">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex align-items-center">
                         <textarea class="form-control comment-box" data-post-id="{post_id}" data-user-id="{current_user_id}" placeholder="Write a comment..." id="comment-box-{post_id}"></textarea>
+                        <div class="d-flex align-items-center justify-content-center h-100">
+                    <button class="btn bg-color-main"  style="margin-left: 1rem" onclick="postComment({post_id},{current_user_id})">Comment</button>
                     </div>
+                    </div>
+                    
                 </div>
+                
             </div>
         </div>
     </div>

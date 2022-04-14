@@ -1,3 +1,4 @@
+let shouldRun=true;
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
@@ -39,7 +40,7 @@ $(document).ready(function () {
       "<div class='d-flex justify-content-center' onclick='openFileDialogue()'><div class='modal-icon'><i class='fa-solid fa-camera-retro'></i></div></div>");
   });
   attachCommentListener();
-  
+  intervalCaller(getCurrentEmergency,5000);
 });
 
 function loadFileImages(f,id) {
@@ -184,6 +185,29 @@ function toggleBookMark(post_id,user_id){
   });
 }
 
+function postComment(post_id, user_id){
+    let comment_box = $('#comment-box-' + post_id);
+    let comment_text = comment_box.val();
+    $.ajax({
+      url: "modules/commentAPI.php",
+      type: "POST",
+      dataType: "json",
+      data: {
+        comment_text: comment_text,
+        post_id: post_id,
+        user_id: user_id
+      },
+      success: function (data) {
+        console.log(data);
+        if (data['success']==true) {
+          comment_box.val("");
+          data=data['comment'];
+          let comment_html = getCommentHtml(data);
+          $("#commentlist-" + post_id).append(comment_html);
+        }
+      }
+    });
+}
 function attachCommentListener(){
   console.log("attachCommentListener");
   $(".comment-box").on("keyup",function(e){
@@ -252,4 +276,39 @@ function sharePost($post_id){
       }
     }
   });
+}
+
+function getCurrentEmergency(){
+  $.ajax({
+    url: "modules/getCurrentEmergencyAPI.php",
+    type: "POST",
+    dataType: "json",
+    success: function (data) {
+      if (data['success']==true) {
+        console.log("success");
+        let emergencyHeadline = $("#emergency-headline");
+        let emergencyLink = $("#emergency-link");
+        emergencyHeadline.text(data['post']['p_content']);
+        if(emergencyLink.length>0){
+          emergencyLink.attr("href",'/realtime_reporting_system/explore.php?post_id='+data['post']['p_id']);
+        }else{
+          let headlineLinkContainer = $('#headline-link-container');
+          headlineLinkContainer.append('<a href="/realtime_reporting_system/explore.php?post_id='+data['post']['p_id']+'" class="btn btn-danger btn-sm">Learn More</a>');
+        }
+      }
+    }
+  });
+}
+
+function intervalCaller(foo, time){
+  console.log("intervalCaller");
+  foo();
+  if(shouldRun){
+    setTimeout(function(){
+      intervalCaller(foo,time);
+    },time);
+  }
+}
+function changeShouldRun(){
+  shouldRun = !shouldRun;
 }
