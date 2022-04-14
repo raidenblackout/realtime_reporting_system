@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <select class="form-control custom-select" aria-label="Category" name="category" required>
-                        <option selected disabled>Select a category</option>
+                        <option value="" disabled>Select a category</option>
                         <?php
                         require_once 'modules/dependencyImporter.php';
                         $categories = getCategories();

@@ -26,10 +26,17 @@ if(isset($_SESSION['user_id'])){
 <body>
     <div class="wrapper fadeInDown">
   <div id="formContent">
-
+        
 
     <div class="login-header">
       <h3 style="color: var(--ic)">Sign Up</h3>
+      <h7 style="color: red">
+        <?php
+        if(isset($_GET['err'])){
+            echo "Signup failed";
+        }
+        ?>
+      </h7>
     </div>
 
     <form action="modules/signup.php" method="post" enctype="multipart/form-data">

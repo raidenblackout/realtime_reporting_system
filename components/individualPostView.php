@@ -133,7 +133,7 @@ function getIndividualPost(Post $post){
                     <div class="d-flex align-items-center">
                         <textarea class="form-control comment-box" data-post-id="{post_id}" data-user-id="{current_user_id}" placeholder="Write a comment..." id="comment-box-{post_id}"></textarea>
                         <div class="d-flex align-items-center justify-content-center h-100">
-                    <button class="btn bg-color-main"  style="margin-left: 1rem" onclick="postComment({post_id},{current_user_id})">Comment</button>
+                    <button class="btn bg-color-main"  style="margin-left: 1rem" onclick="postComment({post_id},{current_user_id})"><i class="fa fa-caret-right" style="color: var(--bg)" aria-hidden="true"></i></button>
                     </div>
                     </div>
                     

@@ -11,7 +11,7 @@ if($result){
     setcookie('user_id',$result['u_id'],time()+3600);
     header('Location: ../index.php');
 }else{
-    header('Location: ../login.php');
+    header('Location: ../login.php?err=1');
 }
 
 

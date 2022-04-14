@@ -17,7 +17,7 @@
   ?></p>
   <p class="lead" id="headline-link-container"> 
     <?php
-      if($result){
+      if($result->num_rows>0){
         echo '<a class="btn btn-danger btn-sm" href="/realtime_reporting_system/explore.php?post_id='.$row['p_id'].'" role="button" id="emergency-link">Learn more</a>';
       }
     ?>

@@ -293,7 +293,7 @@ function getCurrentEmergency(){
           emergencyLink.attr("href",'/realtime_reporting_system/explore.php?post_id='+data['post']['p_id']);
         }else{
           let headlineLinkContainer = $('#headline-link-container');
-          headlineLinkContainer.append('<a href="/realtime_reporting_system/explore.php?post_id='+data['post']['p_id']+'" class="btn btn-danger btn-sm">Learn More</a>');
+          headlineLinkContainer.append('<a href="/realtime_reporting_system/explore.php?post_id='+data['post']['p_id']+'" id="emergency-link" class="btn btn-danger btn-sm">Learn More</a>');
         }
       }
     }

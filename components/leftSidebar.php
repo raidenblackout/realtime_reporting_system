@@ -31,11 +31,10 @@ $content='<div class="collapse collapsible flex-column flex-shrink-0 bg-light le
     </ul>
     <div class="dropdown border-top">
         <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-toggle="dropdown" aria-expanded="false">
-        <i class="fa fa-user"></i>
+        <i class="fa fa-cog"></i>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
             <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
