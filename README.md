@@ -1,5 +1,5 @@
 # Realtime Reporting System
-A model for emergencies
+A prototype for emergencies
 # Features
 ![Login](https://github.com/raidenblackout/realtime_reporting_system/blob/master/login.png)
 ![Sign UP](https://github.com/raidenblackout/realtime_reporting_system/blob/master/signup.jpg)
